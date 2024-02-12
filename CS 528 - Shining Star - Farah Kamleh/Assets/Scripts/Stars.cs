@@ -16,9 +16,6 @@ public class Stars : MonoBehaviour
     {
         // call the function that reads through the CSV file
         ReadCSVFile();
-
-        // refer to the renderer component
-        renderer = GetComponent<SpriteRenderer>();
     }
 
     // function that reads through the stars data
@@ -45,65 +42,68 @@ public class Stars : MonoBehaviour
             // skip the first row
             if (values[0] != "")
             {
-                // if the distance is less than or equal to 8 parsecs (~25 lightyears)
-                if (float.Parse(values[2]) <= 8)
+                // if the distance is less than or equal to 100 parsecs (~326 lightyears)
+                if (float.Parse(values[2]) <= 100)
                 {
                     // instantiate star sprite prefab and use x, y, z for position 
                     Instantiate(starSprite, new Vector3(float.Parse(values[3]), float.Parse(values[4]), float.Parse(values[5])), Quaternion.identity);
 
-                    // make the color and size match spect
-                    if (values[11] == "O")
+                    // refer to the renderer component
+                    renderer = starSprite.GetComponent<SpriteRenderer>();
+
+                    // make the color and size match spect (1/4th of estimated diameter)
+                    if (values[11] == "O\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(6.6f / 2.0f, 6.6f / 2.0f, 6.6f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(146, 181, 255);
                     }
-                    if (values[11] == "B")
+                    if (values[11] == "B\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(1.8f / 2.0f, 1.8f / 2.0f, 1.8f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(162, 192, 255);
                     }
-                    if (values[11] == "A")
+                    if (values[11] == "A\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(1.4f / 2.0f, 1.4f / 2.0f, 1.4f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(213, 224, 255);
                     }
-                    if (values[11] == "F")
+                    if (values[11] == "F\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(1.15f / 2.0f, 1.15f / 2.0f, 1.15f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(249, 245, 255);
                     }
-                    if (values[11] == "G")
+                    if (values[11] == "G\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(0.96f / 2.0f, 0.96f / 2.0f, 0.96f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(255, 237, 227);
                     }
-                    if (values[11] == "K")
+                    if (values[11] == "K\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(0.7f / 2.0f, 0.7f / 2.0f, 0.7f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(255, 218, 181);
                     }
-                    if (values[11] == "M")
+                    if (values[11] == "M\r")
                     {
-                        // change size based on stellar classification estimates (* 2 to diameter)
-                        starSprite.transform.localScale = new Vector3(6.6f * 2f, 6.6f * 2f, 6.6f * 2f);
+                        // change size based on stellar classification estimates
+                        starSprite.transform.localScale = new Vector3(0.2f / 2.0f, 0.2f / 2.0f, 0.2f / 2.0f);
 
                         // color based on chromaticity
                         renderer.color = new Color(255, 181, 108);
