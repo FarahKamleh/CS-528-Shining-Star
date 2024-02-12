@@ -58,7 +58,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(6.6f / 2.0f, 6.6f / 2.0f, 6.6f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(146, 181, 255);
+                        renderer.color = new Color(146f / 255.0f, 181f / 255.0f, 255f / 255.0f);
                     }
                     if (values[11] == "B\r")
                     {
@@ -66,7 +66,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(1.8f / 2.0f, 1.8f / 2.0f, 1.8f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(162, 192, 255);
+                        renderer.color = new Color(162f / 255.0f, 192f / 255.0f, 255f / 255.0f);
                     }
                     if (values[11] == "A\r")
                     {
@@ -74,7 +74,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(1.4f / 2.0f, 1.4f / 2.0f, 1.4f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(213, 224, 255);
+                        renderer.color = new Color(213f / 255.0f, 224f / 255.0f, 255f / 255.0f);
                     }
                     if (values[11] == "F\r")
                     {
@@ -82,7 +82,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(1.15f / 2.0f, 1.15f / 2.0f, 1.15f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(249, 245, 255);
+                        renderer.color = new Color(249f / 255.0f, 245f / 255.0f, 255f / 255.0f);
                     }
                     if (values[11] == "G\r")
                     {
@@ -90,7 +90,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(0.96f / 2.0f, 0.96f / 2.0f, 0.96f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(255, 237, 227);
+                        renderer.color = new Color(255f / 255.0f, 237f / 255.0f, 227f / 255.0f);
                     }
                     if (values[11] == "K\r")
                     {
@@ -98,7 +98,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(0.7f / 2.0f, 0.7f / 2.0f, 0.7f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(255, 218, 181);
+                        renderer.color = new Color(255f / 255.0f, 218f / 255.0f, 181f / 255.0f);
                     }
                     if (values[11] == "M\r")
                     {
@@ -106,7 +106,7 @@ public class Stars : MonoBehaviour
                         starSprite.transform.localScale = new Vector3(0.2f / 2.0f, 0.2f / 2.0f, 0.2f / 2.0f);
 
                         // color based on chromaticity
-                        renderer.color = new Color(255, 181, 108);
+                        renderer.color = new Color(255f / 255.0f, 181f / 255.0f, 108f / 255.0f);
                     }
                 }
             }
