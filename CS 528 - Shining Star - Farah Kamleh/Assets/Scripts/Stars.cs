@@ -11,6 +11,12 @@ public class Stars : MonoBehaviour
     // refer to the renderer
     SpriteRenderer renderer;
 
+    // refer to the player
+    public GameObject player;
+
+    // a list of gameobjects for the star sprites
+    List<GameObject> stars = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +51,8 @@ public class Stars : MonoBehaviour
                 // if the distance is less than or equal to 100 parsecs (~326 lightyears)
                 if (float.Parse(values[2]) <= 100)
                 {
-                    // instantiate star sprite prefab and use x, y, z for position 
-                    Instantiate(starSprite, new Vector3(float.Parse(values[3]), float.Parse(values[4]), float.Parse(values[5])), Quaternion.identity);
+                    // instantiate star sprite prefab and use x, y, z for position and add to array
+                    stars.Add(Instantiate(starSprite, new Vector3(float.Parse(values[3]), float.Parse(values[4]), float.Parse(values[5])), Quaternion.identity));
 
                     // refer to the renderer component
                     renderer = starSprite.GetComponent<SpriteRenderer>();
@@ -111,5 +117,34 @@ public class Stars : MonoBehaviour
                 }
             }
         }
+    }
+
+    // call ineumerator function for checking distance at every frame
+    private void Update()
+    {
+        // call an ienumerator function to check distance from player
+        StartCoroutine(RenderAtDistance());
+    }
+
+    // check the distance of each star from the player, deactivate if too far away
+    private IEnumerator RenderAtDistance()
+    {
+        // loop through the list of stars
+        for (int i = 0; i < stars.Count; i++)
+        {
+            // if the star is too far from the player
+            if (Vector3.Distance(player.transform.position, stars[i].transform.position) > 50)
+            {
+                // disable the star
+                stars[i].SetActive(false);
+            }
+            // otherwise
+            else
+            {
+                // enable the star
+                stars[i].SetActive(true);
+            }
+        }
+        yield return new WaitForSeconds(1);
     }
 }

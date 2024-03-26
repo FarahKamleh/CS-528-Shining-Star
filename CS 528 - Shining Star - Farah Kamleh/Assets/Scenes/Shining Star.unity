@@ -284,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starSprite: {fileID: 3209431677590680407, guid: dbfb28194f9b4fc4a8781082b94fbdc4,
     type: 3}
+  player: {fileID: 1281230610}
 --- !u!1 &1731071405
 GameObject:
   m_ObjectHideFlags: 0
