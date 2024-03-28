@@ -28,7 +28,7 @@ public class Stars : MonoBehaviour
     void ReadCSVFile()
     {
         // load the CSV file as a text asset
-        TextAsset csvText = Resources.Load<TextAsset>("athyg_31_reduced_m10_transformed");
+        TextAsset csvText = Resources.Load<TextAsset>("athyg_31_reduced_m10_new");
 
         // create a list to store each line as an element
         List<string> linesList = new List<string>();
