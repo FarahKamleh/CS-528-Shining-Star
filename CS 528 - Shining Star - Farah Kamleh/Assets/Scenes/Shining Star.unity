@@ -262,6 +262,54 @@ PrefabInstance:
       propertyPath: navMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012607288206, guid: c1621f4dd1e8c2748a5a423aa7736d55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010808051194, guid: c1621f4dd1e8c2748a5a423aa7736d55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011111918770, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_Text
+      value: "Shining Star is intended to be a visualization of more than the 88 official
+        IAU constellations from 1930. Limited to a distance of about 100 parsecs,
+        this Virtual Reality project allows for the revelation of the modern constellations
+        and that of the Arabian peninsula.\n\nUsing a timescale factor of 1,000 years
+        per second, an observation of the currently visible constellations' change
+        over time is permitted. When viewing the constellations of the Arabian peninsula,
+        pressing the L1 button will reveal information about the constellation Al-Thurayya
+        and an accompanying voice-over.\n\nIf need be, the location, orientation,
+        and time can all be reset to the starting point. The distance between the
+        stars can be increased or decreased by changing the scale mappings from parsecs
+        to feet. Finally, when switching between constellations, the soundtrack changes
+        from \"_\" for the modern constellations to \"_\" for the Arabian ones and
+        vice versa.\n\nSoudtrack Credits:\n\t- Song 1\n\t- Song 2\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011641407824, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_Text
+      value: 'CS 528 - Virtual Reality
+
+        Spring 2024
+
+        University of Illinois Chicago'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010541511360, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_Text
+      value: Shining Star
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011468825520, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Farah Kamleh
+
+        and
+
+        the Mercy of God (Please)'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1621f4dd1e8c2748a5a423aa7736d55, type: 3}
 --- !u!1 &1281230610 stripped
