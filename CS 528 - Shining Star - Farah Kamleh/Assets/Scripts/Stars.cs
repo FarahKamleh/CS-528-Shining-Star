@@ -14,14 +14,24 @@ public class Stars : MonoBehaviour
     // refer to the player
     public GameObject player;
 
-    // a list of gameobjects for the star sprites
-    List<GameObject> stars = new List<GameObject>();
+    // track previous position of the player
+    public Vector3 lastPosition;
+
+    // create two dictionaries to store star data
+    public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
+    public Dictionary<float, starClass> starClass = new Dictionary<float, starClass>();
 
     // Start is called before the first frame update
     void Start()
     {
+        // at start, last position is start position
+        lastPosition = player.transform.position;
+
         // call the function that reads through the CSV file
         ReadCSVFile();
+
+        // render some stars at the start
+        StartCoroutine(RenderAtDistance());
     }
 
     // function that reads through the stars data
@@ -31,7 +41,7 @@ public class Stars : MonoBehaviour
         TextAsset csvText = Resources.Load<TextAsset>("athyg_31_reduced_m10_new");
 
         // create a list to store each line as an element
-        List<string> linesList = new List<string>();
+         List<string> linesList = new List<string>();
 
         // string variable to split and store each value as an element
         string[] values;
@@ -49,16 +59,34 @@ public class Stars : MonoBehaviour
             if (values[0] != "")
             {
                 // if the distance is less than or equal to 100 parsecs (~326 lightyears)
-                if (float.Parse(values[2]) <= 100)
-                {
-                    // instantiate star sprite prefab and use x, y, z for position and add to array
-                    stars.Add(Instantiate(starSprite, new Vector3(float.Parse(values[3]), float.Parse(values[4]), float.Parse(values[5])), Quaternion.identity));
+                //if (float.Parse(values[2]) <= 100)
+                //{
+                    // create the star class
+                    starClass star = new starClass();
+
+                    // store the values
+                    star.hip = float.Parse(values[1]);
+                    star.distance = float.Parse(values[2]);
+                    star.xPos = float.Parse(values[3]);
+                    star.yPos = float.Parse(values[4]);
+                    star.zPos = float.Parse(values[5]);
+                    star.mag = float.Parse(values[6]);
+                    star.xVel = float.Parse(values[8]);
+                    star.yVel = float.Parse(values[9]);
+                    star.zVel = float.Parse(values[10]);
+                    star.spect = values[11];
+
+                    // add the star to the disctionary containing class information
+                    starClass.Add(star.hip, star);
+
+                    // instantiate star sprite prefab and use x, y, z for position and add to dictionary with hip #
+                    theStars.Add(star.hip, Instantiate(starSprite, new Vector3(star.xPos, star.yPos, star.zPos), Quaternion.identity));
 
                     // refer to the renderer component
                     renderer = starSprite.GetComponent<SpriteRenderer>();
 
                     // make the color and size match spect (1/4th of estimated diameter)
-                    if (values[11] == "O\r")
+                    if (star.spect == "O\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(6.6f / 4.0f, 6.6f / 4.0f, 6.6f / 4.0f);
@@ -66,7 +94,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(146f / 255.0f, 181f / 255.0f, 255f / 255.0f);
                     }
-                    if (values[11] == "B\r")
+                    if (star.spect == "B\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(1.8f / 4.0f, 1.8f / 4.0f, 1.8f / 4.0f);
@@ -74,7 +102,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(162f / 255.0f, 192f / 255.0f, 255f / 255.0f);
                     }
-                    if (values[11] == "A\r")
+                    if (star.spect == "A\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(1.4f / 4.0f, 1.4f / 4.0f, 1.4f / 4.0f);
@@ -82,7 +110,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(213f / 255.0f, 224f / 255.0f, 255f / 255.0f);
                     }
-                    if (values[11] == "F\r")
+                    if (star.spect == "F\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(1.15f / 4.0f, 1.15f / 4.0f, 1.15f / 4.0f);
@@ -90,7 +118,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(249f / 255.0f, 245f / 255.0f, 255f / 255.0f);
                     }
-                    if (values[11] == "G\r")
+                    if (star.spect == "G\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(0.96f / 4.0f, 0.96f / 4.0f, 0.96f / 4.0f);
@@ -98,7 +126,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(255f / 255.0f, 237f / 255.0f, 227f / 255.0f);
                     }
-                    if (values[11] == "K\r")
+                    if (star.spect == "K\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(0.7f / 4.0f, 0.7f / 4.0f, 0.7f / 4.0f);
@@ -106,7 +134,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(255f / 255.0f, 218f / 255.0f, 181f / 255.0f);
                     }
-                    if (values[11] == "M\r")
+                    if (star.spect == "M\r")
                     {
                         // change size based on stellar classification estimates
                         starSprite.transform.localScale = new Vector3(0.2f / 4.0f, 0.2f / 4.0f, 0.2f / 4.0f);
@@ -114,7 +142,7 @@ public class Stars : MonoBehaviour
                         // color based on chromaticity
                         renderer.color = new Color(255f / 255.0f, 181f / 255.0f, 108f / 255.0f);
                     }
-                }
+                //}
             }
         }
     }
@@ -122,27 +150,36 @@ public class Stars : MonoBehaviour
     // call ineumerator function for checking distance at every frame
     private void Update()
     {
-        // call an ienumerator function to check distance from player
-        StartCoroutine(RenderAtDistance());
+        Debug.Log(Vector3.Distance(lastPosition, player.transform.position));
+
+        // only call if player has traveled a particular distance from original position
+        if (Vector3.Distance(lastPosition, player.transform.position) > 10)
+        {
+            // update new position
+            lastPosition = player.transform.position;
+
+            // call an ienumerator function to check distance from player
+            StartCoroutine(RenderAtDistance());
+        }
     }
 
     // check the distance of each star from the player, deactivate if too far away
     private IEnumerator RenderAtDistance()
     {
-        // loop through the list of stars
-        for (int i = 0; i < stars.Count; i++)
+        // loop through the dictionary of stars
+        foreach (KeyValuePair<float, GameObject> singleStar in theStars)
         {
             // if the star is too far from the player
-            if (Vector3.Distance(player.transform.position, stars[i].transform.position) > 50)
+            if (Vector3.Distance(player.transform.position, singleStar.Value.transform.position) > 50)
             {
                 // disable the star
-                stars[i].SetActive(false);
+                singleStar.Value.SetActive(false);
             }
             // otherwise
             else
             {
                 // enable the star
-                stars[i].SetActive(true);
+                singleStar.Value.SetActive(true);
             }
         }
         yield return new WaitForSeconds(1);
