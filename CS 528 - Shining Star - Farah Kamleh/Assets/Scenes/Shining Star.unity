@@ -177,6 +177,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 542475707c6b5644dac416d70a41eb31, type: 3}
+--- !u!1 &955578899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955578900}
+  - component: {fileID: 955578901}
+  m_Layer: 0
+  m_Name: Script Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &955578900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955578899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955578901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955578899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f981223fceee8154c8de6e65034a9174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineObj: {fileID: 1511351691292152473, guid: 0d19c429a6490064f869e0c1e407371e, type: 3}
+  starSprite: {fileID: 3209431677590680407, guid: dbfb28194f9b4fc4a8781082b94fbdc4,
+    type: 3}
+  player: {fileID: 1281230610}
+  lastPosition: {x: 0, y: 0, z: 0}
+  constellationChoice: 1
 --- !u!1001 &1144090950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -273,19 +322,19 @@ PrefabInstance:
     - target: {fileID: 114000011111918770, guid: c1621f4dd1e8c2748a5a423aa7736d55,
         type: 3}
       propertyPath: m_Text
-      value: "Shining Star is intended to be a visualization of more than the 88 official
-        IAU constellations from 1930. Limited to a distance of about 100 parsecs,
-        this Virtual Reality project allows for the revelation of the modern constellations
-        and that of the Arabian peninsula.\n\nUsing a timescale factor of 1,000 years
-        per second, an observation of the currently visible constellations' change
-        over time is permitted. When viewing the constellations of the Arabian peninsula,
-        pressing the L1 button will reveal information about the constellation Al-Thurayya
-        and an accompanying voice-over.\n\nIf need be, the location, orientation,
-        and time can all be reset to the starting point. The distance between the
-        stars can be increased or decreased by changing the scale mappings from parsecs
-        to feet. Finally, when switching between constellations, the soundtrack changes
-        from \"_\" for the modern constellations to \"_\" for the Arabian ones and
-        vice versa.\n\nSoudtrack Credits:\n\t- Song 1\n\t- Song 2\n"
+      value: "Shining Star is a visualization of more than the 88 official IAU constellations
+        from 1930. With a total of 107,868 stars, this Virtual Reality project allows
+        for the revelation of the following constellations: modern, _, _, _, and _,\n\nUsing
+        a timescale factor of 1,000 years per second, an observation of the currently
+        visible constellations' change over time is permitted. When viewing the constellations
+        of the Arabian peninsula, pressing the L1 button will reveal information about
+        the constellation Al-Thurayya and an accompanying voice-over.\n\nIf need be,
+        the location, orientation, and time can all be reset to the starting point.
+        The distance between the stars can be increased or decreased by changing the
+        scale mappings from parsecs to feet. Finally, when switching between constellations,
+        the soundtrack changes from \"_\" for the modern constellations to \"_\" for
+        the Arabian ones and vice versa.\n\nSoudtrack Credits:\n\t- Song 1\n\t- Song
+        2\n"
       objectReference: {fileID: 0}
     - target: {fileID: 114000011641407824, guid: c1621f4dd1e8c2748a5a423aa7736d55,
         type: 3}
@@ -318,21 +367,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1144090950}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1281230611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281230610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f981223fceee8154c8de6e65034a9174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  starSprite: {fileID: 3209431677590680407, guid: dbfb28194f9b4fc4a8781082b94fbdc4,
-    type: 3}
-  player: {fileID: 1281230610}
 --- !u!1 &1731071405
 GameObject:
   m_ObjectHideFlags: 0

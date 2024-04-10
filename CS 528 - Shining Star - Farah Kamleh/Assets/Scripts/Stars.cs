@@ -19,7 +19,25 @@ public class Stars : MonoBehaviour
 
     // create two dictionaries to store star data
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
-    public Dictionary<float, starClass> starClass = new Dictionary<float, starClass>();
+    public Dictionary<float, starClass> theStarClass = new Dictionary<float, starClass>();
+
+    // an empty prefab game object for each line
+    public GameObject lineObj;
+
+    // use a gradient
+    Gradient gradient;
+
+    // int for constellation choice in menu; at start, modern
+    public int constellationChoice = 1;
+
+    // text asset to be used for loading constellations
+    TextAsset csvConst;
+
+    // a list to store lines
+    List<string> constLine;
+
+    // string variable to split and store each value of a line as an element
+    string[] values;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +50,18 @@ public class Stars : MonoBehaviour
 
         // render some stars at the start
         StartCoroutine(RenderAtDistance());
+
+        // instantiate gradient to be altered per line
+        gradient = new Gradient();
+
+        // instantiate list
+        constLine = new List<string>();
+
+        // begin with the modern constellations
+        CreateConstellations(constellationChoice);
     }
+
+    //----------------------------------------------------------------------------------------
 
     // function that reads through the stars data
     void ReadCSVFile()
@@ -77,7 +106,7 @@ public class Stars : MonoBehaviour
                     star.spect = values[11];
 
                     // add the star to the disctionary containing class information
-                    starClass.Add(star.hip, star);
+                    theStarClass.Add(star.hip, star);
 
                     // instantiate star sprite prefab and use x, y, z for position and add to dictionary with hip #
                     theStars.Add(star.hip, Instantiate(starSprite, new Vector3(star.xPos, star.yPos, star.zPos), Quaternion.identity));
@@ -147,10 +176,58 @@ public class Stars : MonoBehaviour
         }
     }
 
+    //-------------------------------------------------------------------------------------------------
+
+    void CreateConstellations(int constellationChoice)
+    {
+        // if the choice is "modern"
+        if (constellationChoice == 1)
+        {
+            // load the CSV file as a text asset
+            csvConst = Resources.Load<TextAsset>("modern");
+
+            // split the entire text by newlines to separate by line
+            constLine = csvConst.text.Split('\n').ToList();
+            
+            // GameObject mainConst = transform.gameObject;
+
+            // loop through each constellation and split by space
+            for (int i = 0; i < constLine.Count; i++)
+            {
+                // for each line, make each value an element by splitting
+                values = constLine[i].Split(' ');
+
+                // for the position of the line prefab
+                GameObject constellation = new GameObject();
+
+                // make constellation parent
+                // constellation.transform.parent = mainConst.transform;
+
+                // loop through each element of the line
+                for (int j = 3; j < values.Count() - 1; j = j + 2)
+                {
+                    Debug.Log(theStarClass.ContainsKey(float.Parse(values[j])));
+
+                    // instantiate line prefab with constellation position
+                    GameObject linePrefab = Instantiate(lineObj, constellation.transform);
+
+                    // use a line renderer
+                    LineRenderer lineRenderer = linePrefab.GetComponent<LineRenderer>();
+
+                    // create the line using two stars as the set positions
+                    lineRenderer.SetPosition(0, theStars[float.Parse(values[j].Trim())].transform.position);
+                    lineRenderer.SetPosition(1, theStars[float.Parse(values[j + 1].Trim())].transform.position);
+                }
+            }
+        }
+    }
+
+    //-------------------------------------------------------------------------------------------
+
     // call ineumerator function for checking distance at every frame
     private void Update()
     {
-        Debug.Log(Vector3.Distance(lastPosition, player.transform.position));
+        // Debug.Log(Vector3.Distance(lastPosition, player.transform.position));
 
         // only call if player has traveled a particular distance from original position
         if (Vector3.Distance(lastPosition, player.transform.position) > 10)
@@ -161,7 +238,11 @@ public class Stars : MonoBehaviour
             // call an ienumerator function to check distance from player
             StartCoroutine(RenderAtDistance());
         }
+
+        // Debug.Log(theStarClass.ContainsKey(float.Parse("98036")));
     }
+
+    //-----------------------------------------------------------------------------------------------
 
     // check the distance of each star from the player, deactivate if too far away
     private IEnumerator RenderAtDistance()
