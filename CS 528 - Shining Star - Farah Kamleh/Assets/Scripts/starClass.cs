@@ -17,4 +17,5 @@ public class starClass
     public float yVel;
     public float zVel;
     public string spect;
+    public Color color;
 }

@@ -105,12 +105,6 @@ public class Stars : MonoBehaviour
                     star.zVel = float.Parse(values[10]);
                     star.spect = values[11];
 
-                    // add the star to the disctionary containing class information
-                    theStarClass.Add(star.hip, star);
-
-                    // instantiate star sprite prefab and use x, y, z for position and add to dictionary with hip #
-                    theStars.Add(star.hip, Instantiate(starSprite, new Vector3(star.xPos, star.yPos, star.zPos), Quaternion.identity));
-
                     // refer to the renderer component
                     renderer = starSprite.GetComponent<SpriteRenderer>();
 
@@ -122,6 +116,9 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(146f / 255.0f, 181f / 255.0f, 255f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
                     if (star.spect == "B\r")
                     {
@@ -130,6 +127,9 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(162f / 255.0f, 192f / 255.0f, 255f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
                     if (star.spect == "A\r")
                     {
@@ -138,6 +138,9 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(213f / 255.0f, 224f / 255.0f, 255f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
                     if (star.spect == "F\r")
                     {
@@ -146,6 +149,9 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(249f / 255.0f, 245f / 255.0f, 255f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
                     if (star.spect == "G\r")
                     {
@@ -154,6 +160,9 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(255f / 255.0f, 237f / 255.0f, 227f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
                     if (star.spect == "K\r")
                     {
@@ -162,6 +171,9 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(255f / 255.0f, 218f / 255.0f, 181f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
                     if (star.spect == "M\r")
                     {
@@ -170,7 +182,16 @@ public class Stars : MonoBehaviour
 
                         // color based on chromaticity
                         renderer.color = new Color(255f / 255.0f, 181f / 255.0f, 108f / 255.0f);
+
+                        // store color value
+                        star.color = renderer.color;
                     }
+
+                // add the star to the disctionary containing class information
+                theStarClass.Add(star.hip, star);
+
+                // instantiate star sprite prefab and use x, y, z for position and add to dictionary with hip #
+                theStars.Add(star.hip, Instantiate(starSprite, new Vector3(star.xPos, star.yPos, star.zPos), Quaternion.identity));
                 //}
             }
         }
@@ -219,7 +240,7 @@ public class Stars : MonoBehaviour
                     lineRenderer.SetPosition(1, theStars[float.Parse(values[j + 1].Trim())].transform.position);
 
                     // set the colors of the line
-                    //lineRenderer.SetColors(theStars[float.Parse(values[j].Trim())].Color, theStars[float.Parse(values[j + 1].Trim())]);
+                    lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].color, theStarClass[float.Parse(values[j + 1].Trim())].color);
                 }
             }
         }
