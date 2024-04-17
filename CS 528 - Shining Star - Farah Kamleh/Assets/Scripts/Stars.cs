@@ -218,13 +218,17 @@ public class Stars : MonoBehaviour
             // load the CSV file as a text asset
             csvConst = Resources.Load<TextAsset>("al-sufi");
         }
+        // if the choice is "arabian peninsula"
         if (constellationChoice == 3)
         {
-
+            // load the CSV file as a text asset
+            csvConst = Resources.Load<TextAsset>("arabian peninsula");
         }
+        // if the choice is "arabic indigenous"
         if (constellationChoice == 4)
         {
-
+            // load the CSV file as a text asset
+            csvConst = Resources.Load<TextAsset>("arabic indigenous");
         }
         if (constellationChoice == 5)
         {
