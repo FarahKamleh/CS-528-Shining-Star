@@ -21,14 +21,11 @@ public class Stars : MonoBehaviour
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
     public Dictionary<float, starClass> theStarClass = new Dictionary<float, starClass>();
 
-    // set of lists to store each constellation set
-    public List<LineRenderer> modern = new List<LineRenderer>();
+    // list of constellation line renderers
+    public List<LineRenderer> constellationSet = new List<LineRenderer>();
 
     // an empty prefab game object for each line
     public GameObject lineObj;
-
-    // int for constellation choice in menu; at start, modern
-    public int constellationChoice = 1;
 
     // text asset to be used for loading constellations
     TextAsset csvConst;
@@ -53,12 +50,6 @@ public class Stars : MonoBehaviour
 
         // instantiate list
         constLine = new List<string>();
-
-        // begin with the modern constellations
-        CreateConstellations(1, modern);
-
-        // load next set of constellations
-
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -211,7 +202,7 @@ public class Stars : MonoBehaviour
 
     //---------------------------------------------------------------------------------------------------------------------------------------
 
-    void CreateConstellations(int constellationChoice, List<LineRenderer> constellationSet)
+    public void CreateConstellations(int constellationChoice)
     {
         /* choice in dataset */
 
@@ -221,9 +212,11 @@ public class Stars : MonoBehaviour
             // load the CSV file as a text asset
             csvConst = Resources.Load<TextAsset>("modern");
         }
+        // if the choice is "arabic al-sufi"
         if (constellationChoice == 2)
         {
-
+            // load the CSV file as a text asset
+            csvConst = Resources.Load<TextAsset>("al-sufi");
         }
         if (constellationChoice == 3)
         {
@@ -260,6 +253,10 @@ public class Stars : MonoBehaviour
 
                 // use a line renderer
                 LineRenderer lineRenderer = linePrefab.GetComponent<LineRenderer>();
+
+                // for determining which constellations to eliminate
+                Debug.Log(values[j].Trim());
+                Debug.Log(values[j + 1].Trim());
 
                 // create the line using two stars as the set positions
                 lineRenderer.SetPosition(0, theStars[float.Parse(values[j].Trim())].transform.position);
@@ -299,10 +296,6 @@ public class Stars : MonoBehaviour
         // return
         yield return new WaitForSeconds(1);
     }
-
-    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    // to switch between constellations
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
