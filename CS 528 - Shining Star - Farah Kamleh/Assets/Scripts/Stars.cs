@@ -206,6 +206,11 @@ public class Stars : MonoBehaviour
     {
         /* choice in dataset */
 
+        // if the choice is "none"
+        if (constellationChoice == 0)
+        {
+
+        }
         // if the choice is "modern"
         if (constellationChoice == 1)
         {
@@ -230,9 +235,17 @@ public class Stars : MonoBehaviour
             // load the CSV file as a text asset
             csvConst = Resources.Load<TextAsset>("arabic indigenous");
         }
+        // if the constellation choice is "arabic lunar mansions"
         if (constellationChoice == 5)
         {
-
+            // load the CSV file as a text asset
+            csvConst = Resources.Load<TextAsset>("arabic lunar mansions");
+        }
+        // if the constellation choice is "egyptian"
+        if (constellationChoice == 6)
+        {
+            // load the CSV file as a text asset
+            csvConst = Resources.Load<TextAsset>("egyptian");
         }
 
         /* read through dataset */

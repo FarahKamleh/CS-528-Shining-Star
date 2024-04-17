@@ -889,7 +889,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: CreateConstellations
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &381927103
 GameObject:
@@ -1663,7 +1674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: Egyptian
 --- !u!222 &601357662
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1740,7 +1751,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: Arabic Lunar Mansions
 --- !u!222 &611642351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2102,7 +2113,7 @@ GameObject:
   - component: {fileID: 904261916}
   - component: {fileID: 904261917}
   m_Layer: 0
-  m_Name: Toggle (5)
+  m_Name: Lunar Mansions Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2174,7 +2185,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: CreateConstellations
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &905445533
 GameObject:
@@ -3196,12 +3218,13 @@ PrefabInstance:
       propertyPath: m_Text
       value: "Shining Star is a visualization of more than the 88 official IAU constellations
         from 1930. With a total of 107,868 stars, this Virtual Reality project allows
-        for the revelation of the following constellations: Modern, Arabic Al-Sufi,
-        Arabian Peninsula, _, _, and None,\n\nUsing a timescale factor of 1,000 years
-        per second, an observation of the currently visible constellations' change
-        over time is permitted. When viewing the constellations of the Arabian Peninsula,
-        pressing the L1 button will reveal information about the constellation Al-Thurayya
-        and an accompanying voice-over.\n\nIf need be, the location, orientation,
+        for the revelation of the following constellations for the purposes of comparing
+        and contrasting: Modern, Arabic Al-Sufi, Arabian Peninsula, Arabic Indigenous,
+        Arabic Lunar Mansions, Egyptian, and None.\n\nUsing a timescale factor of
+        1,000 years per second, an observation of the currently visible constellations'
+        change over time is permitted. When viewing the constellations of the Arabian
+        Peninsula, pressing the L1 button will reveal information about the constellation
+        Al-Thurayya and an accompanying voice-over.\n\nIf need be, the location, orientation,
         and time can all be reset to the starting point. The distance between the
         stars can be increased or decreased by changing the scale mappings from parsecs
         to feet. Finally, when switching between constellations, the soundtrack changes
@@ -3953,7 +3976,7 @@ GameObject:
   - component: {fileID: 1427122343}
   - component: {fileID: 1427122344}
   m_Layer: 0
-  m_Name: Toggle (6)
+  m_Name: Egyptian Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4025,7 +4048,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: CreateConstellations
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &1507005434
 GameObject:
@@ -4184,7 +4218,7 @@ GameObject:
   - component: {fileID: 1608640116}
   - component: {fileID: 1608640117}
   m_Layer: 0
-  m_Name: Indigenous
+  m_Name: Indigenous Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
