@@ -12,6 +12,9 @@ public class audioChanger : MonoBehaviour
     // the audio source to be used
     public AudioSource smAudioSource;
 
+    // the volume slider
+    public Slider sliderVol;
+
     // toggles for the above
     public Toggle light;
     public Toggle stars;
@@ -30,7 +33,7 @@ public class audioChanger : MonoBehaviour
         if (light.isOn == true)
         {
             // stop the audio source
-            // smAudioSource.Stop();
+            smAudioSource.Stop();
 
             // turn the other toggle off
             stars.isOn = false;
@@ -43,7 +46,7 @@ public class audioChanger : MonoBehaviour
         if (stars.isOn == true)
         {
             // stop the audio source
-            // smAudioSource.Stop();
+            smAudioSource.Stop();
 
             // turn the other toggle off
             light.isOn = false;
@@ -57,5 +60,12 @@ public class audioChanger : MonoBehaviour
         {
             smAudioSource.Stop();
         }
+    }
+
+    // function to control volume
+    public void volumeChanger()
+    {
+        // make the audio source's volume that of the slider divided by ten
+        smAudioSource.volume = sliderVol.value / 10.0f;
     }
 }

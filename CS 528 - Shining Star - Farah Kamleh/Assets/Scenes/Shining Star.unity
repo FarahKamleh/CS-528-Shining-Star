@@ -798,10 +798,21 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578902}
+        m_MethodName: volumeChanger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &179292443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,6 +3516,7 @@ MonoBehaviour:
   LinkinPark: {fileID: 8300000, guid: 77f287c861234e34ab7ec1eee8708ef5, type: 3}
   Skillet: {fileID: 8300000, guid: a62144576d9a66b45ac70cc4a5f3e497, type: 3}
   smAudioSource: {fileID: 955578904}
+  sliderVol: {fileID: 165446919}
   light: {fileID: 1907298540}
   stars: {fileID: 259013473}
 --- !u!82 &955578904
@@ -3519,7 +3531,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
