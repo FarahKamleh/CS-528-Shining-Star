@@ -27,10 +27,10 @@ public class audioChanger : MonoBehaviour
     }
 
     // FIXME: a function that will be called for toggle presses
-    public void SwitchAudio()
+    public void SwitchAudio(int selected)
     {
         // if Light is on, play audio
-        if (light.isOn == true)
+        if (light.isOn == true && selected == 1)
         {
             // stop the audio source
             smAudioSource.Stop();
@@ -43,7 +43,7 @@ public class audioChanger : MonoBehaviour
         }
 
         // if Stars toggle is on, play audio
-        if (stars.isOn == true)
+        if (stars.isOn == true && selected == 2)
         {
             // stop the audio source
             smAudioSource.Stop();
