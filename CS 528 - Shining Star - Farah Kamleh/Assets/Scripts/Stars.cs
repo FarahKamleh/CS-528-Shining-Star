@@ -27,6 +27,11 @@ public class Stars : MonoBehaviour
     public Toggle Egyptian;
     public Toggle None;
 
+    // toggles for time
+    public Toggle startT;
+    public Toggle reverseT;
+    public Toggle stopT;
+
     // create two dictionaries to store star data
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
     public Dictionary<float, starClass> theStarClass = new Dictionary<float, starClass>();
@@ -65,6 +70,9 @@ public class Stars : MonoBehaviour
 
         // instantiate list
         constLine = new List<string>();
+
+        // ensure stop time is toggled on
+        stopT.isOn = true;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,6 +88,13 @@ public class Stars : MonoBehaviour
 
             // call an ienumerator function to check distance from player
             StartCoroutine(RenderAtDistance());
+        }
+
+        // if start time is on
+        if (startT.isOn == true)
+        {
+            // move the stars forward
+            StartCoroutine(timeDelay(1));
         }
     }
 
@@ -433,6 +448,61 @@ public class Stars : MonoBehaviour
             }
         }
     }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // this function allows the stars and constellations to move over time
+    public void time(int button)
+    {
+        // if start time
+        if (startT.isOn == true && button == 1)
+        {
+            // turn off others
+            reverseT.isOn = false;
+            stopT.isOn = false;
+        }
+        // if reverse time
+        if (reverseT.isOn == true && button == 2)
+        {
+            // turn off others
+            stopT.isOn = false;
+            startT.isOn = false;
+        }
+        // if stop time
+        else if (stopT.isOn == true && button == 3)
+        {
+            // turn off others
+            reverseT.isOn = false;
+            startT.isOn = false;
+        }
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // function to add delays to time updates
+    private IEnumerator timeDelay(int button)
+    {
+        // if brought by start time
+        if (button == 1)
+        {
+            // loop through the stars
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // transform the position based on velocity x 0.00102269 which is parsecs traveled per 1000 years 
+                singleStar.Value.transform.position = new Vector3(singleStar.Value.transform.position.x + (theStarClass[singleStar.Key].xVel * 0.00102269f), singleStar.Value.transform.position.y + (theStarClass[singleStar.Key].yVel * 0.00102269f), singleStar.Value.transform.position.z + (theStarClass[singleStar.Key].zVel * 0.00102269f));
+            }
+        }
+        // if brought by reverse time
+        else if (button == 2)
+        {
+
+
+        }
+
+        // delay
+        yield return new WaitForSeconds(0);
+    }
+
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
