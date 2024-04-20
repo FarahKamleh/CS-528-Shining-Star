@@ -96,6 +96,12 @@ public class Stars : MonoBehaviour
             // move the stars forward
             StartCoroutine(timeDelay(1));
         }
+        // if reverse time is on
+        else if (reverseT.isOn == true)
+        {
+            // move the stars backwards
+            StartCoroutine(timeDelay(2));
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -495,8 +501,12 @@ public class Stars : MonoBehaviour
         // if brought by reverse time
         else if (button == 2)
         {
-
-
+            // loop through the stars
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // transform the position based on velocity x 0.00102269 which is parsecs traveled per 1000 years 
+                singleStar.Value.transform.position = new Vector3(singleStar.Value.transform.position.x - (theStarClass[singleStar.Key].xVel * 0.00102269f), singleStar.Value.transform.position.y - (theStarClass[singleStar.Key].yVel * 0.00102269f), singleStar.Value.transform.position.z - (theStarClass[singleStar.Key].zVel * 0.00102269f));
+            }
         }
 
         // delay
