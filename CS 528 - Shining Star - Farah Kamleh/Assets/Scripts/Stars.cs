@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Stars : MonoBehaviour
 {
@@ -17,12 +18,26 @@ public class Stars : MonoBehaviour
     // track previous position of the player
     public Vector3 lastPosition;
 
+    // the toggles of the constellations
+    public Toggle Modern;
+    public Toggle Sufi;
+    public Toggle Peninsula;
+    public Toggle Indigenous;
+    public Toggle LunarMansions;
+    public Toggle Egyptian;
+    public Toggle None;
+
     // create two dictionaries to store star data
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
     public Dictionary<float, starClass> theStarClass = new Dictionary<float, starClass>();
 
     // list of constellation line renderers
-    public List<LineRenderer> constellationSet = new List<LineRenderer>();
+    public List<LineRenderer> modernList = new List<LineRenderer>();
+    public List<LineRenderer> sufiList = new List<LineRenderer>();
+    public List<LineRenderer> peninsulaList = new List<LineRenderer>();
+    public List<LineRenderer> indigenousList = new List<LineRenderer>();
+    public List<LineRenderer> lunarMansionsList = new List<LineRenderer>();
+    public List<LineRenderer> egyptianList = new List<LineRenderer>();
 
     // an empty prefab game object for each line
     public GameObject lineObj;
@@ -202,6 +217,7 @@ public class Stars : MonoBehaviour
 
     //---------------------------------------------------------------------------------------------------------------------------------------
 
+    // a function to determine which constellations to toggle on and off
     public void CreateConstellations(int constellationChoice)
     {
         /* choice in dataset */
@@ -209,47 +225,177 @@ public class Stars : MonoBehaviour
         // if the choice is "none"
         if (constellationChoice == 0)
         {
-
+            // toggle off all others
+            Modern.isOn = false;
+            Sufi.isOn = false;
+            Peninsula.isOn = false;
+            Indigenous.isOn = false;
+            LunarMansions.isOn = false;
+            Egyptian.isOn = false;
         }
         // if the choice is "modern"
-        if (constellationChoice == 1)
+        else if (constellationChoice == 1)
         {
-            // load the CSV file as a text asset
-            csvConst = Resources.Load<TextAsset>("modern");
+            // if toggled on
+            if (Modern.isOn == true)
+            {
+                // load the CSV file as a text asset
+                csvConst = Resources.Load<TextAsset>("modern");
+
+                // call the generation function
+                generateConstellations(constellationChoice, csvConst, modernList);
+            }
+            // if toggled off
+            else if (Modern.isOn == false)
+            {
+                // destroy the list
+                for (int i = 0; i < modernList.Count; i++)
+                {
+                    // rid of a single line renderer 
+                    Destroy(modernList[i]);
+                }
+
+                // exit
+                return;
+            }
         }
         // if the choice is "arabic al-sufi"
-        if (constellationChoice == 2)
+        else if (constellationChoice == 2)
         {
-            // load the CSV file as a text asset
-            csvConst = Resources.Load<TextAsset>("al-sufi");
+            // if toggled on
+            if (Sufi.isOn == true)
+            {
+                // load the CSV file as a text asset
+                csvConst = Resources.Load<TextAsset>("al-sufi");
+
+                // call the generation function
+                generateConstellations(constellationChoice, csvConst, sufiList);
+            }
+            // if toggled off
+            else if (Sufi.isOn == false)
+            {
+                // destroy the list
+                for (int i = 0; i < sufiList.Count; i++)
+                {
+                    // rid of a single line renderer 
+                    Destroy(sufiList[i]);
+                }
+
+                // exit
+                return;
+            }
         }
         // if the choice is "arabian peninsula"
-        if (constellationChoice == 3)
+        else if (constellationChoice == 3)
         {
-            // load the CSV file as a text asset
-            csvConst = Resources.Load<TextAsset>("arabian peninsula");
+            // if toggled on
+            if (Peninsula.isOn == true)
+            {
+                // load the CSV file as a text asset
+                csvConst = Resources.Load<TextAsset>("arabian peninsula");
+
+                // call the generation function
+                generateConstellations(constellationChoice, csvConst, peninsulaList);
+            }
+            // if toggled off
+            else if (Peninsula.isOn == false)
+            {
+                // destroy the list
+                for (int i = 0; i < peninsulaList.Count; i++)
+                {
+                    // rid of a single line renderer 
+                    Destroy(peninsulaList[i]);
+                }
+
+                // exit
+                return;
+            }
         }
         // if the choice is "arabic indigenous"
-        if (constellationChoice == 4)
+        else if (constellationChoice == 4)
         {
-            // load the CSV file as a text asset
-            csvConst = Resources.Load<TextAsset>("arabic indigenous");
+            // if toggled on
+            if (Indigenous.isOn == true)
+            {
+                // load the CSV file as a text asset
+                csvConst = Resources.Load<TextAsset>("arabic indigenous");
+
+                // call the generation function
+                generateConstellations(constellationChoice, csvConst, indigenousList);
+            }
+            // if toggled off
+            else if (Indigenous.isOn == false)
+            {
+                // destroy the list
+                for (int i = 0; i < indigenousList.Count; i++)
+                {
+                    // rid of a single line renderer 
+                    Destroy(indigenousList[i]);
+                }
+
+                // exit
+                return;
+            }
         }
         // if the constellation choice is "arabic lunar mansions"
-        if (constellationChoice == 5)
+        else if (constellationChoice == 5)
         {
-            // load the CSV file as a text asset
-            csvConst = Resources.Load<TextAsset>("arabic lunar mansions");
+            // if toggled on
+            if (LunarMansions.isOn == true)
+            {
+                // load the CSV file as a text asset
+                csvConst = Resources.Load<TextAsset>("arabic lunar mansions");
+
+                // call the generation function
+                generateConstellations(constellationChoice, csvConst, lunarMansionsList);
+            }
+            // if toggled off
+            else if (LunarMansions.isOn == false)
+            {
+                // destroy the list
+                for (int i = 0; i < lunarMansionsList.Count; i++)
+                {
+                    // rid of a single line renderer 
+                    Destroy(lunarMansionsList[i]);
+                }
+
+                // exit
+                return;
+            }
         }
         // if the constellation choice is "egyptian"
-        if (constellationChoice == 6)
+        else if (constellationChoice == 6)
         {
-            // load the CSV file as a text asset
-            csvConst = Resources.Load<TextAsset>("egyptian");
+            // if toggled on
+            if (Egyptian.isOn == true)
+            {
+                // load the CSV file as a text asset
+                csvConst = Resources.Load<TextAsset>("egyptian");
+
+                // call the generation function
+                generateConstellations(constellationChoice, csvConst, egyptianList);
+            }
+            // if toggled off
+            else if (Egyptian.isOn == false)
+            {
+                // destroy the list
+                for (int i = 0; i < egyptianList.Count; i++)
+                {
+                    // rid of a single line renderer 
+                    Destroy(egyptianList[i]);
+                }
+
+                // exit
+                return;
+            }
         }
+    }
 
-        /* read through dataset */
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    // a separate function to actually load the constellations
+    public void generateConstellations(int constellationChoice, TextAsset csvConst, List<LineRenderer> givenList)
+    {
         // split the entire text by newlines to separate by line
         constLine = csvConst.text.Split('\n').ToList();
 
@@ -283,7 +429,7 @@ public class Stars : MonoBehaviour
                 lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].color, theStarClass[float.Parse(values[j + 1].Trim())].color);
 
                 // store the line in the list
-                constellationSet.Add(lineRenderer);
+                givenList.Add(lineRenderer);
             }
         }
     }

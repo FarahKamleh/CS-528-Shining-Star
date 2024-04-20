@@ -3499,6 +3499,13 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 1281230610}
   lastPosition: {x: 0, y: 0, z: 0}
+  Modern: {fileID: 1618818536}
+  Sufi: {fileID: 938984272}
+  Peninsula: {fileID: 1784584186}
+  Indigenous: {fileID: 1608640117}
+  LunarMansions: {fileID: 904261917}
+  Egyptian: {fileID: 1427122344}
+  None: {fileID: 349473315}
   constellationSet: []
   lineObj: {fileID: 1511351691292152473, guid: 0d19c429a6490064f869e0c1e407371e, type: 3}
 --- !u!114 &955578902

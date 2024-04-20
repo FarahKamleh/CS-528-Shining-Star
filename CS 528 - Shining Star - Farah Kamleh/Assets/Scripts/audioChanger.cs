@@ -26,7 +26,7 @@ public class audioChanger : MonoBehaviour
         light.isOn = true;
     }
 
-    // FIXME: a function that will be called for toggle presses
+    // a function that will be called for toggle presses
     public void SwitchAudio(int selected)
     {
         // if Light is on, play audio
