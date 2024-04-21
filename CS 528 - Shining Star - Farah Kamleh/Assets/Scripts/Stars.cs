@@ -439,8 +439,8 @@ public class Stars : MonoBehaviour
                 LineRenderer lineRenderer = linePrefab.GetComponent<LineRenderer>();
 
                 // for determining which constellations to eliminate
-                Debug.Log(values[j].Trim());
-                Debug.Log(values[j + 1].Trim());
+                // Debug.Log(values[j].Trim());
+                // Debug.Log(values[j + 1].Trim());
 
                 // create the line using two stars as the set positions
                 lineRenderer.SetPosition(0, theStars[float.Parse(values[j].Trim())].transform.position);
