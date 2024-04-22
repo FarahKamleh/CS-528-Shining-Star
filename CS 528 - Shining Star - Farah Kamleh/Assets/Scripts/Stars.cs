@@ -36,6 +36,9 @@ public class Stars : MonoBehaviour
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
     public Dictionary<float, starClass> theStarClass = new Dictionary<float, starClass>();
 
+    // dictionary for exoplanet data wit hip keys and num planets values
+    public Dictionary<float, int> exoStars = new Dictionary<float, int>();
+
     // list of constellation line renderers
     public List<LineRenderer> modernList = new List<LineRenderer>();
     public List<LineRenderer> sufiList = new List<LineRenderer>();
@@ -61,6 +64,9 @@ public class Stars : MonoBehaviour
     {
         // at start, last position is start position
         lastPosition = player.transform.position;
+
+        // function to create exoplanet dictionary
+        exoplanetData();
 
         // call the function that reads through the CSV file
         ReadCSVFile();
@@ -101,6 +107,38 @@ public class Stars : MonoBehaviour
         {
             // move the stars backwards
             StartCoroutine(timeDelay(2));
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    // a function to fill up the exoplanet dictionary
+    void exoplanetData()
+    {
+        // load csv as text asset
+        TextAsset exoText = Resources.Load<TextAsset>("exoplanet_filtered");
+
+        // create a list to store each line as an element
+        List<string> exoList = new List<string>();
+
+        // split the entire text by new lines to separate by line
+        exoList = exoText.text.Split('\n').ToList();
+
+        // loop through the list and store the values within the dictionary
+        for (int i = 0; i < exoList.Count; i++)
+        {
+            // split the line
+            string[] hipAndNum = exoList[i].Split(',');
+
+            // split the second value so only the hip number is used
+            string[] theHIP = hipAndNum[1].Split(' ');
+
+            // FIXME: currently the # with a "
+            // Debug.Log(hipAndNum[2].Remove(hipAndNum[2].Length - 1));
+            // Debug.Log(theHIP[1]);
+
+            // store the key, value pair per star
+            exoStars.Add(float.Parse(theHIP[1]), int.Parse(hipAndNum[2].Remove(hipAndNum[2].Length - 1)));
         }
     }
 
@@ -226,6 +264,10 @@ public class Stars : MonoBehaviour
                     // store color value
                     star.color = renderer.color;
                 }
+
+                /* store exoplanet colors */
+
+
 
                 // add the star to the disctionary containing class information
                 theStarClass.Add(star.hip, star);
