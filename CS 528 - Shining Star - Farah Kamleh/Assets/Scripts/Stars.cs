@@ -27,6 +27,12 @@ public class Stars : MonoBehaviour
     public Toggle Egyptian;
     public Toggle None;
 
+    // buttons for resetting
+    public Button positionB;
+    public Button rotationB;
+    public Button starsB;
+    public Button allB;
+
     // toggles for time
     public Toggle startT;
     public Toggle reverseT;
@@ -35,6 +41,10 @@ public class Stars : MonoBehaviour
     // toggles for colors
     public Toggle Stellar;
     public Toggle Exo;
+
+    // for returning to original positions
+    public Vector3 originalPos;
+    public Quaternion originalRot;
 
     // create two dictionaries to store star data
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
@@ -66,6 +76,10 @@ public class Stars : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // variables to know the original position and rotation of the CAVE2
+        originalPos = player.transform.position;
+        originalRot = player.transform.rotation;
+
         // at start, last position is start position
         lastPosition = player.transform.position;
 
@@ -647,6 +661,39 @@ public class Stars : MonoBehaviour
 
         // return/delay
         yield return new WaitForSeconds(0);
+    }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // resetting
+    public void resetPos()
+    {
+        // reset the player position
+        player.transform.position = originalPos;
+    }
+
+    public void resetRot()
+    {
+        // reset the player rotation
+        player.transform.rotation = originalRot;
+    }
+
+    public void resetStars()
+    {
+        // loop through the list and transform position
+        foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+        {
+            // reset the position
+            singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos, theStarClass[singleStar.Key].yPos, theStarClass[singleStar.Key].zPos);
+        }
+    }
+
+    public void resetAll()
+    {
+        // call the other functions
+        resetPos();
+        resetRot();
+        resetStars();
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------

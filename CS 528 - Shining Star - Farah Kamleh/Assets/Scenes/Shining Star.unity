@@ -3411,7 +3411,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 502221763}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: resetPos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &502221763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6081,11 +6092,17 @@ MonoBehaviour:
   LunarMansions: {fileID: 904261917}
   Egyptian: {fileID: 1427122344}
   None: {fileID: 349473315}
+  positionB: {fileID: 0}
+  rotationB: {fileID: 0}
+  starsB: {fileID: 0}
+  allB: {fileID: 0}
   startT: {fileID: 1852729863}
   reverseT: {fileID: 896510701}
   stopT: {fileID: 691881985}
   Stellar: {fileID: 1052970379}
   Exo: {fileID: 672913500}
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0, w: 0}
   modernList: []
   sufiList: []
   peninsulaList: []
@@ -6715,7 +6732,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1029089926}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: resetAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1029089926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7644,7 +7672,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1190303434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: resetRot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1190303434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11337,7 +11376,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2024685823}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: resetStars
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2024685823
 MonoBehaviour:
   m_ObjectHideFlags: 0
