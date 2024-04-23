@@ -32,6 +32,10 @@ public class Stars : MonoBehaviour
     public Toggle reverseT;
     public Toggle stopT;
 
+    // toggles for colors
+    public Toggle Stellar;
+    public Toggle Exo;
+
     // create two dictionaries to store star data
     public Dictionary<float, GameObject> theStars = new Dictionary<float, GameObject>();
     public Dictionary<float, starClass> theStarClass = new Dictionary<float, starClass>();
@@ -68,8 +72,8 @@ public class Stars : MonoBehaviour
         // function to create exoplanet dictionary
         exoplanetData();
 
-        // call the function that reads through the CSV file
-        ReadCSVFile();
+        // make sure stellar is on
+        Stellar.isOn = true;
 
         // render some stars at the start
         StartCoroutine(RenderAtDistance());
@@ -148,7 +152,7 @@ public class Stars : MonoBehaviour
     //------------------------------------------------------------------------------------------------------------------------------
 
     // function that reads through the stars data
-    void ReadCSVFile()
+    void ReadCSVFile(int button)
     {
         // load the CSV file as a text asset
         TextAsset csvText = Resources.Load<TextAsset>("athyg_31_reduced_m10_new");
@@ -189,88 +193,119 @@ public class Stars : MonoBehaviour
                 // refer to the renderer component
                 renderer = starSprite.GetComponent<SpriteRenderer>();
 
+                /* spect colors */
+
                 // make the color and size match spect (1/4th of estimated diameter)
                 if (star.spect == "O\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(6.6f / 4.0f, 6.6f / 4.0f, 6.6f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(1f / 255.0f, 45f / 255.0f, 145f / 255.0f);
-
                     // store color value
-                    star.color = renderer.color;
+                    star.color = new Color(1f / 255.0f, 45f / 255.0f, 145f / 255.0f);
                 }
-                if (star.spect == "B\r")
+                else if (star.spect == "B\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(1.8f / 4.0f, 1.8f / 4.0f, 1.8f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(55f / 255.0f, 95f / 255.0f, 185f / 255.0f);
-
                     // store color value
-                    star.color = renderer.color;
+                    star.color = new Color(55f / 255.0f, 95f / 255.0f, 185f / 255.0f);
                 }
-                if (star.spect == "A\r")
+                else if (star.spect == "A\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(1.4f / 4.0f, 1.4f / 4.0f, 1.4f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(85f / 255.0f, 125f / 255.0f, 215f / 255.0f);
-
                     // store color value
-                    star.color = renderer.color;
+                    star.color = new Color(85f / 255.0f, 125f / 255.0f, 215f / 255.0f);
                 }
-                if (star.spect == "F\r")
+                else if (star.spect == "F\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(1.15f / 4.0f, 1.15f / 4.0f, 1.15f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(200f / 255.0f, 215f / 255.0f, 255f / 255.0f);
-
                     // store color value
-                        star.color = renderer.color;
+                    star.color = new Color(200f / 255.0f, 215f / 255.0f, 255f / 255.0f);
                 }
-                if (star.spect == "G\r")
+                else if (star.spect == "G\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(0.96f / 4.0f, 0.96f / 4.0f, 0.96f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(255f / 255.0f, 250f / 255.0f, 200f / 255.0f);
-
                     // store color value
-                    star.color = renderer.color;
+                    star.color = new Color(255f / 255.0f, 250f / 255.0f, 200f / 255.0f);
                 }
-                if (star.spect == "K\r")
+                else if (star.spect == "K\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(0.7f / 4.0f, 0.7f / 4.0f, 0.7f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(215f / 255.0f, 170f / 255.0f, 85f / 255.0f);
-
                     // store color value
-                    star.color = renderer.color;
+                    star.color = new Color(215f / 255.0f, 170f / 255.0f, 85f / 255.0f);
                 }
-                if (star.spect == "M\r")
+                else if (star.spect == "M\r")
                 {
                     // change size based on stellar classification estimates
                     starSprite.transform.localScale = new Vector3(0.2f / 4.0f, 0.2f / 4.0f, 0.2f / 4.0f);
 
-                    // color based on chromaticity
-                    renderer.color = new Color(185f / 255.0f, 120f / 255.0f, 0f / 255.0f);
-
                     // store color value
-                    star.color = renderer.color;
+                    star.color = new Color(185f / 255.0f, 120f / 255.0f, 0f / 255.0f);
                 }
 
                 /* store exoplanet colors */
 
+                // check if key is in dictionary first
+                if (exoStars.ContainsKey(star.hip))
+                {
+                    // color based on number of planets
+                    if (exoStars[star.hip] == 1)
+                    {
+                        // store the exo color (red)
+                        star.exoColor = new Color(185f / 255.0f, 40f / 255.0f, 0f / 255.0f);
+                    }
+                    else if (exoStars[star.hip] == 2)
+                    {
+                        // store the exo color (blue)
+                        star.exoColor = new Color(0f / 255.0f, 20f / 255.0f, 185f / 255.0f);
+                    }
+                    else if (exoStars[star.hip] == 3)
+                    {
+                        // store the exo color (green)
+                        star.exoColor = new Color(20f / 255.0f, 185f / 255.0f, 0f / 255.0f);
+                    }
+                    else if (exoStars[star.hip] == 4)
+                    {
+                        // store the exo color (yellow)
+                        star.exoColor = new Color(185f / 255.0f, 185f / 255.0f, 0f / 255.0f);
+                    }
+                    else if (exoStars[star.hip] == 5)
+                    {
+                        // store the exo color (purple)
+                        star.exoColor = new Color(120f / 255.0f, 0f / 255.0f, 185f / 255.0f);
+                    }
+                    else if (exoStars[star.hip] == 6)
+                    {
+                        // store the exo color (orange)
+                        star.exoColor = new Color(185f / 255.0f, 130f / 255.0f, 0f / 255.0f);
+                    }
+                }
+                // if not in dictionary, make white
+                else
+                {
+                    star.exoColor = new Color(255f / 255.0f, 255f / 255.0f, 255f / 255.0f);
+                }
 
+                // if stellar
+                if (button == 1)
+                {
+                    renderer.color = star.color;
+                }
+                // if exo
+                if (button == 2)
+                {
+                    renderer.color = star.exoColor;
+                }
 
                 // add the star to the disctionary containing class information
                 theStarClass.Add(star.hip, star);
@@ -491,8 +526,17 @@ public class Stars : MonoBehaviour
                 lineRenderer.SetPosition(0, theStars[float.Parse(values[j].Trim())].transform.position);
                 lineRenderer.SetPosition(1, theStars[float.Parse(values[j + 1].Trim())].transform.position);
 
-                // set the colors of the line
-                lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].color, theStarClass[float.Parse(values[j + 1].Trim())].color);
+                // set the colors of the line depending on color scheme
+                if (Stellar.isOn == true)
+                {
+                    // stellar colors
+                    lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].color, theStarClass[float.Parse(values[j + 1].Trim())].color);
+                }
+                else if (Exo.isOn == true)
+                {
+                    // exoplanet colors
+                    lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].exoColor, theStarClass[float.Parse(values[j + 1].Trim())].exoColor);
+                }
 
                 // store the line in the list
                 givenList.Add(lineRenderer);
@@ -558,6 +602,52 @@ public class Stars : MonoBehaviour
         yield return new WaitForSeconds(0);
     }
 
+    // ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // take care of color toggles
+    public void colorScheme(int button)
+    {
+        // if stellar
+        if (Stellar.isOn == true && button == 1)
+        {
+            // turn off exo
+            Exo.isOn = false;
+
+            // color
+            StartCoroutine(colorStars(button));
+        }
+        // if exo
+        if (Exo.isOn == true && button == 2)
+        {
+            // turn off stellar
+            Stellar.isOn = false;
+
+            // color
+            StartCoroutine(colorStars(button));
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // color based on scheme
+    private IEnumerator colorStars(int button)
+    {
+        // destroy stars
+        foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+        {
+            Destroy(singleStar.Value);
+        }
+
+        // clear the dictionaries
+        theStars.Clear();
+        theStarClass.Clear();
+
+        // regenerate stars
+        ReadCSVFile(button);
+
+        // return/delay
+        yield return new WaitForSeconds(0);
+    }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
