@@ -79,6 +79,9 @@ public class Stars : MonoBehaviour
 
         // ensure stop time is toggled on
         stopT.isOn = true;
+
+        // make sure modern is on
+        Modern.isOn = true;
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -138,7 +141,7 @@ public class Stars : MonoBehaviour
             // Debug.Log(theHIP[1]);
 
             // store the key, value pair per star
-            exoStars.Add(float.Parse(theHIP[1]), int.Parse(hipAndNum[2].Remove(hipAndNum[2].Length - 1)));
+            exoStars.Add(float.Parse(theHIP[1]), int.Parse(hipAndNum[2].Remove(1)));
         }
     }
 
@@ -193,7 +196,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(6.6f / 4.0f, 6.6f / 4.0f, 6.6f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(146f / 255.0f, 181f / 255.0f, 255f / 255.0f);
+                    renderer.color = new Color(1f / 255.0f, 45f / 255.0f, 145f / 255.0f);
 
                     // store color value
                     star.color = renderer.color;
@@ -204,7 +207,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(1.8f / 4.0f, 1.8f / 4.0f, 1.8f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(162f / 255.0f, 192f / 255.0f, 255f / 255.0f);
+                    renderer.color = new Color(55f / 255.0f, 95f / 255.0f, 185f / 255.0f);
 
                     // store color value
                     star.color = renderer.color;
@@ -215,7 +218,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(1.4f / 4.0f, 1.4f / 4.0f, 1.4f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(213f / 255.0f, 224f / 255.0f, 255f / 255.0f);
+                    renderer.color = new Color(85f / 255.0f, 125f / 255.0f, 215f / 255.0f);
 
                     // store color value
                     star.color = renderer.color;
@@ -226,7 +229,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(1.15f / 4.0f, 1.15f / 4.0f, 1.15f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(249f / 255.0f, 245f / 255.0f, 255f / 255.0f);
+                    renderer.color = new Color(200f / 255.0f, 215f / 255.0f, 255f / 255.0f);
 
                     // store color value
                         star.color = renderer.color;
@@ -237,7 +240,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(0.96f / 4.0f, 0.96f / 4.0f, 0.96f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(255f / 255.0f, 237f / 255.0f, 227f / 255.0f);
+                    renderer.color = new Color(255f / 255.0f, 250f / 255.0f, 200f / 255.0f);
 
                     // store color value
                     star.color = renderer.color;
@@ -248,7 +251,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(0.7f / 4.0f, 0.7f / 4.0f, 0.7f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(255f / 255.0f, 218f / 255.0f, 181f / 255.0f);
+                    renderer.color = new Color(215f / 255.0f, 170f / 255.0f, 85f / 255.0f);
 
                     // store color value
                     star.color = renderer.color;
@@ -259,7 +262,7 @@ public class Stars : MonoBehaviour
                     starSprite.transform.localScale = new Vector3(0.2f / 4.0f, 0.2f / 4.0f, 0.2f / 4.0f);
 
                     // color based on chromaticity
-                    renderer.color = new Color(255f / 255.0f, 181f / 255.0f, 108f / 255.0f);
+                    renderer.color = new Color(185f / 255.0f, 120f / 255.0f, 0f / 255.0f);
 
                     // store color value
                     star.color = renderer.color;
