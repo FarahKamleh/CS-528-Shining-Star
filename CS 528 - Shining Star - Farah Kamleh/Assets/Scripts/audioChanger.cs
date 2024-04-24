@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class audioChanger : MonoBehaviour
 {
-    // refer to both audio clips that will be switched
-    public AudioClip LinkinPark;
-    public AudioClip Skillet;
-
-    // the audio source to be used
-    public AudioSource smAudioSource;
+    // refer to the audio sources to toggle between
+    public AudioSource LinkinPark;
+    public AudioSource Skillet;
 
     // the volume slider
     public Slider sliderVol;
@@ -33,32 +30,33 @@ public class audioChanger : MonoBehaviour
         if (light.isOn == true && selected == 1)
         {
             // stop the audio source
-            smAudioSource.Stop();
+            Skillet.Stop();
 
             // turn the other toggle off
             stars.isOn = false;
 
             // play the correct song
-            smAudioSource.PlayOneShot(LinkinPark);
+            LinkinPark.Play();
         }
 
         // if Stars toggle is on, play audio
         if (stars.isOn == true && selected == 2)
         {
             // stop the audio source
-            smAudioSource.Stop();
+            LinkinPark.Stop();
 
             // turn the other toggle off
             light.isOn = false;
 
             // play the correct song
-            smAudioSource.PlayOneShot(Skillet);
+            Skillet.Play();
         }
 
         // if all toggles are off, 
         else if ((light.isOn == false) && (stars.isOn == false))
         {
-            smAudioSource.Stop();
+            Skillet.Stop();
+            LinkinPark.Stop();
         }
     }
 
@@ -66,6 +64,7 @@ public class audioChanger : MonoBehaviour
     public void volumeChanger()
     {
         // make the audio source's volume that of the slider divided by ten
-        smAudioSource.volume = sliderVol.value / 10.0f;
+        LinkinPark.volume = sliderVol.value / 10.0f;
+        Skillet.volume = sliderVol.value / 10.0f;
     }
 }
