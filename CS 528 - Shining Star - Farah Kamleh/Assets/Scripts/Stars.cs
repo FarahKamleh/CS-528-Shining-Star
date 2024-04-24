@@ -792,39 +792,71 @@ public class Stars : MonoBehaviour
     // scale the stars out
     public void scaleMapping()
     {
-        // return to original
+        // 0.25x
         if (scaleSlider.value == 1)
         {
-            // loop through stars and place in original positions
+            // loop through stars and place 0.25x
             foreach (KeyValuePair<float, GameObject> singleStar in theStars)
             {
-                // set original position
-                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos, theStarClass[singleStar.Key].yPos, theStarClass[singleStar.Key].zPos);
+                // 0.25x
+                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos * 0.25f, theStarClass[singleStar.Key].yPos * 0.25f, theStarClass[singleStar.Key].zPos * 0.25f);
             }
+
+            // update text
+            scaleText.GetComponent<Text>().text = "Scale Mapping 0.25x";
         }
-        // 2x
+        // 0.5x
         else if (scaleSlider.value == 2)
         {
-            // loop through stars and place in 2x positions
+            // loop through stars and place in 0.5x positions
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // set 0.5x position
+                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos * 0.5f, theStarClass[singleStar.Key].yPos * 0.5f, theStarClass[singleStar.Key].zPos * 0.5f);
+            }
+
+            // update text
+            scaleText.GetComponent<Text>().text = "Scale Mapping 0.50x";
+        }
+        // 1x
+        else if (scaleSlider.value == 3)
+        {
+            // loop through stars and place in 1x position
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // set 1x position
+                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos, theStarClass[singleStar.Key].yPos, theStarClass[singleStar.Key].zPos);
+            }
+
+            // update text
+            scaleText.GetComponent<Text>().text = "Scale Mapping 1.00x";
+        }
+        // 2x
+        else if (scaleSlider.value == 4)
+        {
+            // loop through stars and place in 2x position
             foreach (KeyValuePair<float, GameObject> singleStar in theStars)
             {
                 // set 2x position
                 singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos * 2, theStarClass[singleStar.Key].yPos * 2, theStarClass[singleStar.Key].zPos * 2);
             }
+
+            // update text
+            scaleText.GetComponent<Text>().text = "Scale Mapping 2.00x";
         }
         // 3x
-        else if (scaleSlider.value == 3)
+        else if (scaleSlider.value == 5)
         {
-            // loop through stars and place in 3x positions
+            // loop through stars and place in 3x position
             foreach (KeyValuePair<float, GameObject> singleStar in theStars)
             {
                 // set 3x position
                 singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos * 3, theStarClass[singleStar.Key].yPos * 3, theStarClass[singleStar.Key].zPos * 3);
             }
-        }
 
-        // update text
-        scaleText.GetComponent<Text>().text = "Scale Mapping " + scaleSlider.value + "x";
+            // update text
+            scaleText.GetComponent<Text>().text = "Scale Mapping 3.00x";
+        }
 
         /* redraw present constellations */
 
