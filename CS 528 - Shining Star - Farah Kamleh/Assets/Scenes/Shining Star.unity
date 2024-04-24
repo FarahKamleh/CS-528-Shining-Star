@@ -4852,6 +4852,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621491944}
   m_CullTransparentMesh: 0
+--- !u!224 &655007388 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224000011291950122, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+    type: 3}
+  m_PrefabInstance: {fileID: 1144090950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &658329631
 GameObject:
   m_ObjectHideFlags: 0
@@ -6205,7 +6211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &902695883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7982,21 +7988,29 @@ PrefabInstance:
     - target: {fileID: 114000011111918770, guid: c1621f4dd1e8c2748a5a423aa7736d55,
         type: 3}
       propertyPath: m_Text
-      value: "Shining Star is a visualization of more than the 88 official IAU constellations
+      value: 'Shining Star is a visualization of more than the 88 official IAU constellations
         from 1930. With a total of 107,868 stars, this Virtual Reality project allows
         for the revelation of the following constellations for the purposes of comparing
         and contrasting: Modern, Arabic Al-Sufi, Arabian Peninsula, Arabic Indigenous,
-        Arabic Lunar Mansions, Egyptian, and None.\n\nUsing a timescale factor of
-        1,000 years per second, an observation of the currently visible constellations'
-        change over time is permitted. When viewing the constellations of the Arabian
-        Peninsula, pressing the L1 button will reveal information about the constellation
-        Al-Thurayya and an accompanying voice-over.\n\nIf need be, the location, orientation,
-        and time can all be reset to the starting point. The distance between the
-        stars can be increased or decreased by changing the scale mappings from parsecs
-        to feet. Finally, the audio can be swapped between a piano cover of \"One
-        More Light\" by Linkin Park and a piano cover of \"Stars\" by Skillet.\n\nSoudtrack
-        Credits:\n\t- Piano Cover of Linkin Park's \"One More Light\" by Artistic
-        Amit Music\n\t- Piano Cover of Skillet's \"Stars\" by Pianofy\n"
+        Arabic Lunar Mansions, Egyptian, and None. When viewing the Arabic Indigenous
+        constellations, Al-Thuraya is distinguished from the rest by its glow. Selecting
+        its accompanying menu option reveals information about the constellation.
+
+
+        Using a timescale factor of 1,000 years per second, an observation of the
+        currently visible constellations'' change over time is permitted. Additionally,
+        the distance between the stars and constellations can be altered from 1/4
+        to 3 times the original. If need be, the location, orientation, and time can
+        all be reset to the starting point. Furthermore, the color scheme can be toggled
+        between "Stellar" and "Exoplanet" with an information panel communicating
+        the mapping for each.
+
+
+        Finally, the audio can be swapped between a piano cover of "One More Light"
+        by Linkin Park and a piano cover of "Stars" by Skillet. The volume can be
+        adjusted as preferred.
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 114000011641407824, guid: c1621f4dd1e8c2748a5a423aa7736d55,
         type: 3}
@@ -8064,6 +8078,34 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000014254841768, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000010883682652, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011466464520, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.074
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011541595554, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.341
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011952582294, guid: c1621f4dd1e8c2748a5a423aa7736d55,
+        type: 3}
+      propertyPath: m_Text
+      value: Hold the bottom trigger (L2) and move the wand in the direction to fly
+        or use the analog stick to move. Circle (O) to open menu/select. Cross (X)
+        to close menu. DPad to navigate menu. The "Shing Star >" selection on the
+        menu is the main form of interaction.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1621f4dd1e8c2748a5a423aa7736d55, type: 3}
@@ -10682,6 +10724,84 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559987589}
+  m_CullTransparentMesh: 0
+--- !u!1 &1565167297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565167298}
+  - component: {fileID: 1565167300}
+  - component: {fileID: 1565167299}
+  m_Layer: 5
+  m_Name: Sound Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1565167298
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565167297}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0015, y: 0.0015, z: 0.0015}
+  m_Children: []
+  m_Father: {fileID: 655007388}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.655}
+  m_SizeDelta: {x: 1410, y: 174}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1565167299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565167297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: b23e50ed1b032294d9aa1282e9120e9c, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 64
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 3
+    m_MaxSize: 64
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Soudtrack Credits:\n\t- Piano Cover of Linkin Park's \"One More Light\"
+    by Artistic Amit Music\n\t- Piano Cover of Skillet's \"Stars\" by Pianofy"
+--- !u!222 &1565167300
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565167297}
   m_CullTransparentMesh: 0
 --- !u!1 &1567766268
 GameObject:
