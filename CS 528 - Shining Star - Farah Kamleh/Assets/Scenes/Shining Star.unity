@@ -638,7 +638,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: _ >
+  m_Text: Al-Thuraya >
 --- !u!222 &112680261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6092,10 +6092,6 @@ MonoBehaviour:
   LunarMansions: {fileID: 904261917}
   Egyptian: {fileID: 1427122344}
   None: {fileID: 349473315}
-  positionB: {fileID: 0}
-  rotationB: {fileID: 0}
-  starsB: {fileID: 0}
-  allB: {fileID: 0}
   startT: {fileID: 1852729863}
   reverseT: {fileID: 896510701}
   stopT: {fileID: 691881985}
@@ -7495,8 +7491,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 21079274}
-        m_MethodName: ToggleMenu
+      - m_Target: {fileID: 955578901}
+        m_MethodName: thuraya
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

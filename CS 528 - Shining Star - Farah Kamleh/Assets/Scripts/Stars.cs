@@ -27,12 +27,6 @@ public class Stars : MonoBehaviour
     public Toggle Egyptian;
     public Toggle None;
 
-    // buttons for resetting
-    public Button positionB;
-    public Button rotationB;
-    public Button starsB;
-    public Button allB;
-
     // toggles for time
     public Toggle startT;
     public Toggle reverseT;
@@ -88,6 +82,9 @@ public class Stars : MonoBehaviour
 
         // make sure stellar is on
         Stellar.isOn = true;
+
+        // generate the stars from the csv
+        ReadCSVFile();
 
         // render some stars at the start
         StartCoroutine(RenderAtDistance());
@@ -166,7 +163,7 @@ public class Stars : MonoBehaviour
     //------------------------------------------------------------------------------------------------------------------------------
 
     // function that reads through the stars data
-    void ReadCSVFile(int button)
+    void ReadCSVFile()
     {
         // load the CSV file as a text asset
         TextAsset csvText = Resources.Load<TextAsset>("athyg_31_reduced_m10_new");
@@ -310,16 +307,8 @@ public class Stars : MonoBehaviour
                     star.exoColor = new Color(255f / 255.0f, 255f / 255.0f, 255f / 255.0f);
                 }
 
-                // if stellar
-                if (button == 1)
-                {
-                    renderer.color = star.color;
-                }
-                // if exo
-                if (button == 2)
-                {
-                    renderer.color = star.exoColor;
-                }
+                // color the stars
+                renderer.color = star.color;
 
                 // add the star to the disctionary containing class information
                 theStarClass.Add(star.hip, star);
@@ -543,8 +532,18 @@ public class Stars : MonoBehaviour
                 // set the colors of the line depending on color scheme
                 if (Stellar.isOn == true)
                 {
-                    // stellar colors
-                    lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].color, theStarClass[float.Parse(values[j + 1].Trim())].color);
+                    // if part of Thuraya, recolor
+                    if (values[0] == "2000")
+                    {
+                        // FIXME: add glowy material
+                        lineRenderer.SetColors(new Color(185f / 255.0f, 55f / 255.0f, 55f / 255.0f), new Color(185f / 255.0f, 55f / 255.0f, 55f / 255.0f));
+                    }
+                    else
+                    {
+                        // stellar colors
+                        lineRenderer.SetColors(theStarClass[float.Parse(values[j].Trim())].color, theStarClass[float.Parse(values[j + 1].Trim())].color);
+                    }
+                    
                 }
                 else if (Exo.isOn == true)
                 {
@@ -646,18 +645,60 @@ public class Stars : MonoBehaviour
     // color based on scheme
     private IEnumerator colorStars(int button)
     {
-        // destroy stars
-        foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+        // if stellar
+        if (button == 1)
         {
-            Destroy(singleStar.Value);
+            // loop through stars and recolor
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // stellar recolor
+                singleStar.Value.GetComponent<SpriteRenderer>().color = theStarClass[singleStar.Key].color;
+            }
         }
 
-        // clear the dictionaries
-        theStars.Clear();
-        theStarClass.Clear();
+        // if exo
+        else if (button == 2)
+        {
+            // loop through stars and recolor
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // exoplanet recolor
+                singleStar.Value.GetComponent<SpriteRenderer>().color = theStarClass[singleStar.Key].exoColor;
+            }
+        }
 
-        // regenerate stars
-        ReadCSVFile(button);
+        /* recolor constellations */
+
+        if (Modern.isOn == true)
+        {
+            Modern.isOn = false;
+            Modern.isOn = true;
+        }
+        if (Sufi.isOn == true)
+        {
+            Sufi.isOn = false;
+            Sufi.isOn = true;
+        }
+        if (Peninsula.isOn == true)
+        {
+            Peninsula.isOn = false;
+            Peninsula.isOn = true;
+        }
+        if (Indigenous.isOn == true)
+        {
+            Indigenous.isOn = false;
+            Indigenous.isOn = true;
+        }
+        if (LunarMansions.isOn == true)
+        {
+            LunarMansions.isOn = false;
+            LunarMansions.isOn = true;
+        }
+        if (Egyptian.isOn == true)
+        {
+            Egyptian.isOn = false;
+            Egyptian.isOn = true;
+        }
 
         // return/delay
         yield return new WaitForSeconds(0);
@@ -695,6 +736,24 @@ public class Stars : MonoBehaviour
         resetRot();
         resetStars();
     }
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // take to thuraya and display info
+    public void thuraya()
+    {
+        // turn on Indigenous constellations
+        if (Indigenous.isOn == false)
+        {
+            Indigenous.isOn = true;
+        }
+
+        // set position and rotation of player
+        player.transform.position = new Vector3(6.11f, 4.25f, 1f);
+        player.transform.rotation = Quaternion.Euler(-41.59f, 58.462f, 0f);
+    }
+
+
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
