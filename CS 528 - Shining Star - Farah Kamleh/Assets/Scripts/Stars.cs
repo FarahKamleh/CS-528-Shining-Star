@@ -32,6 +32,10 @@ public class Stars : MonoBehaviour
     public Toggle reverseT;
     public Toggle stopT;
 
+    // game objects for color scheme texts
+    public GameObject stellarText;
+    public GameObject exoText;
+
     // toggles for colors
     public Toggle Stellar;
     public Toggle Exo;
@@ -104,6 +108,10 @@ public class Stars : MonoBehaviour
 
         // make sure modern is on
         Modern.isOn = true;
+
+        // show stellar text at start
+        stellarText.SetActive(true);
+        exoText.SetActive(false);
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -282,39 +290,39 @@ public class Stars : MonoBehaviour
                     // color based on number of planets
                     if (exoStars[star.hip] == 1)
                     {
-                        // store the exo color (red)
-                        star.exoColor = new Color(185f / 255.0f, 40f / 255.0f, 0f / 255.0f);
+                        // store the exo color (dark coral)
+                        star.exoColor = new Color(208f / 255.0f, 79f / 255.0f, 69f / 255.0f);
                     }
                     else if (exoStars[star.hip] == 2)
                     {
-                        // store the exo color (blue)
-                        star.exoColor = new Color(0f / 255.0f, 20f / 255.0f, 185f / 255.0f);
+                        // store the exo color (salmon)
+                        star.exoColor = new Color(247f / 255.0f, 114f / 255.0f, 105f / 255.0f);
                     }
                     else if (exoStars[star.hip] == 3)
                     {
-                        // store the exo color (green)
-                        star.exoColor = new Color(20f / 255.0f, 185f / 255.0f, 0f / 255.0f);
+                        // store the exo color (golden glow)
+                        star.exoColor = new Color(247f / 255.0f, 206f / 255.0f, 114f / 255.0f);
                     }
                     else if (exoStars[star.hip] == 4)
                     {
-                        // store the exo color (yellow)
-                        star.exoColor = new Color(185f / 255.0f, 185f / 255.0f, 0f / 255.0f);
+                        // store the exo color (lemon chiffon)
+                        star.exoColor = new Color(255f / 255.0f, 245f / 255.0f, 208f / 255.0f);
                     }
                     else if (exoStars[star.hip] == 5)
                     {
-                        // store the exo color (purple)
-                        star.exoColor = new Color(120f / 255.0f, 0f / 255.0f, 185f / 255.0f);
+                        // store the exo color (astral)
+                        star.exoColor = new Color(51f / 255.0f, 110f / 255.0f, 31f / 255.0f);
                     }
                     else if (exoStars[star.hip] == 6)
                     {
-                        // store the exo color (orange)
-                        star.exoColor = new Color(185f / 255.0f, 130f / 255.0f, 0f / 255.0f);
+                        // store the exo color (gulf blue)
+                        star.exoColor = new Color(58f / 255.0f, 65f / 255.0f, 98f / 255.0f);
                     }
                 }
-                // if not in dictionary, make white
+                // if not in dictionary, make gray
                 else
                 {
-                    star.exoColor = new Color(255f / 255.0f, 255f / 255.0f, 255f / 255.0f);
+                    star.exoColor = new Color(50f / 255.0f, 50f / 255.0f, 50f / 255.0f);
                 }
 
                 // color the stars
@@ -641,6 +649,8 @@ public class Stars : MonoBehaviour
         {
             // turn off exo
             Exo.isOn = false;
+            exoText.SetActive(false);
+            stellarText.SetActive(true);
 
             // color
             StartCoroutine(colorStars(button));
@@ -650,6 +660,8 @@ public class Stars : MonoBehaviour
         {
             // turn off stellar
             Stellar.isOn = false;
+            stellarText.SetActive(false);
+            exoText.SetActive(true);
 
             // color
             StartCoroutine(colorStars(button));
