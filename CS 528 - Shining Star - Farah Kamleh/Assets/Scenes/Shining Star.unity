@@ -6771,6 +6771,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starSprite: {fileID: 3209431677590680407, guid: dbfb28194f9b4fc4a8781082b94fbdc4,
     type: 3}
+  scaleSlider: {fileID: 1134905076}
+  scaleText: {fileID: 1802794824}
   player: {fileID: 1281230610}
   lastPosition: {x: 0, y: 0, z: 0}
   Modern: {fileID: 1618818536}
@@ -7837,13 +7839,24 @@ MonoBehaviour:
   m_FillRect: {fileID: 2141465736}
   m_HandleRect: {fileID: 108190867}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 10
+  m_MinValue: 1
+  m_MaxValue: 3
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 955578901}
+        m_MethodName: scaleMapping
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1144090950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9810,7 +9823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.95}
+  m_AnchoredPosition: {x: 0, y: 0.914}
   m_SizeDelta: {x: 1410, y: 174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1422291206
@@ -10524,7 +10537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.8}
+  m_AnchoredPosition: {x: 0, y: 1.0639999}
   m_SizeDelta: {x: 1410, y: 174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535092354
@@ -12609,7 +12622,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Scale Mapping
+  m_Text: Scale Mapping 1x
 --- !u!222 &1802794827
 CanvasRenderer:
   m_ObjectHideFlags: 0

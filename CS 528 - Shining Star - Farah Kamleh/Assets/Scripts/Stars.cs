@@ -12,6 +12,12 @@ public class Stars : MonoBehaviour
     // refer to the renderer
     SpriteRenderer renderer;
 
+    // scale mapping slider
+    public Slider scaleSlider;
+
+    // scale text
+    public GameObject scaleText;
+
     // refer to the player
     public GameObject player;
 
@@ -781,7 +787,78 @@ public class Stars : MonoBehaviour
         player.transform.rotation = Quaternion.Euler(-41.59f, 58.462f, 0f);
     }
 
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    // scale the stars out
+    public void scaleMapping()
+    {
+        // return to original
+        if (scaleSlider.value == 1)
+        {
+            // loop through stars and place in original positions
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // set original position
+                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos, theStarClass[singleStar.Key].yPos, theStarClass[singleStar.Key].zPos);
+            }
+        }
+        // 2x
+        else if (scaleSlider.value == 2)
+        {
+            // loop through stars and place in 2x positions
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // set 2x position
+                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos * 2, theStarClass[singleStar.Key].yPos * 2, theStarClass[singleStar.Key].zPos * 2);
+            }
+        }
+        // 3x
+        else if (scaleSlider.value == 3)
+        {
+            // loop through stars and place in 3x positions
+            foreach (KeyValuePair<float, GameObject> singleStar in theStars)
+            {
+                // set 3x position
+                singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos * 3, theStarClass[singleStar.Key].yPos * 3, theStarClass[singleStar.Key].zPos * 3);
+            }
+        }
+
+        // update text
+        scaleText.GetComponent<Text>().text = "Scale Mapping " + scaleSlider.value + "x";
+
+        /* redraw present constellations */
+
+        if (Modern.isOn == true)
+        {
+            Modern.isOn = false;
+            Modern.isOn = true;
+        }
+        if (Sufi.isOn == true)
+        {
+            Sufi.isOn = false;
+            Sufi.isOn = true;
+        }
+        if (Peninsula.isOn == true)
+        {
+            Peninsula.isOn = false;
+            Peninsula.isOn = true;
+        }
+        if (Indigenous.isOn == true)
+        {
+            Indigenous.isOn = false;
+            Indigenous.isOn = true;
+        }
+        if (LunarMansions.isOn == true)
+        {
+            LunarMansions.isOn = false;
+            LunarMansions.isOn = true;
+        }
+        if (Egyptian.isOn == true)
+        {
+            Egyptian.isOn = false;
+            Egyptian.isOn = true;
+        }
+    }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
