@@ -67,6 +67,13 @@ public class Stars : MonoBehaviour
     // string variable to split and store each value of a line as an element
     string[] values;
 
+    // game objects with texts to be altered
+    public GameObject distance;
+    public GameObject timeElapsed;
+
+    // variable to track time elapsed
+    int timePassing = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -126,6 +133,9 @@ public class Stars : MonoBehaviour
             // move the stars backwards
             StartCoroutine(timeDelay(2));
         }
+
+        // display the correct distance traveled
+        distance.GetComponent<Text>().text = "Distance Traveled: " + Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) + " Parsecs";
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
@@ -599,6 +609,9 @@ public class Stars : MonoBehaviour
                 // transform the position based on velocity x 0.00102269 which is parsecs traveled per 1000 years
                 singleStar.Value.transform.position = new Vector3(singleStar.Value.transform.position.x + (theStarClass[singleStar.Key].xVel * 0.00102269f), singleStar.Value.transform.position.y + (theStarClass[singleStar.Key].yVel * 0.00102269f), singleStar.Value.transform.position.z + (theStarClass[singleStar.Key].zVel * 0.00102269f));
             }
+
+            // update the time elapsed
+            timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + (timePassing += 1000) + " Years";
         }
         // if brought by reverse time
         else if (button == 2)
@@ -609,6 +622,9 @@ public class Stars : MonoBehaviour
                 // transform the position based on velocity x 0.00102269 which is parsecs traveled per 1000 years 
                 singleStar.Value.transform.position = new Vector3(singleStar.Value.transform.position.x - (theStarClass[singleStar.Key].xVel * 0.00102269f), singleStar.Value.transform.position.y - (theStarClass[singleStar.Key].yVel * 0.00102269f), singleStar.Value.transform.position.z - (theStarClass[singleStar.Key].zVel * 0.00102269f));
             }
+
+            // update the time elapsed
+            timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + (timePassing += (-1000)) + " Years";
         }
 
         // delay

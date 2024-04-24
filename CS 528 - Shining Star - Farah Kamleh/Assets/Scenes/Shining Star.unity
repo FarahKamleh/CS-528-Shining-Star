@@ -6287,6 +6287,8 @@ MonoBehaviour:
   lunarMansionsList: []
   egyptianList: []
   lineObj: {fileID: 1511351691292152473, guid: 0d19c429a6490064f869e0c1e407371e, type: 3}
+  distance: {fileID: 1535092352}
+  timeElapsed: {fileID: 1422291204}
 --- !u!114 &955578902
 MonoBehaviour:
   m_ObjectHideFlags: 0
