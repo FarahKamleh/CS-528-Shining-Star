@@ -661,6 +661,39 @@ public class Stars : MonoBehaviour
             timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + (timePassing += (-1000)) + " Years";
         }
 
+        /* move the constellations */
+
+        if (Modern.isOn == true)
+        {
+            Modern.isOn = false;
+            Modern.isOn = true;
+        }
+        if (Sufi.isOn == true)
+        {
+            Sufi.isOn = false;
+            Sufi.isOn = true;
+        }
+        if (Peninsula.isOn == true)
+        {
+            Peninsula.isOn = false;
+            Peninsula.isOn = true;
+        }
+        if (Indigenous.isOn == true)
+        {
+            Indigenous.isOn = false;
+            Indigenous.isOn = true;
+        }
+        if (LunarMansions.isOn == true)
+        {
+            LunarMansions.isOn = false;
+            LunarMansions.isOn = true;
+        }
+        if (Egyptian.isOn == true)
+        {
+            Egyptian.isOn = false;
+            Egyptian.isOn = true;
+        }
+
         // delay
         yield return new WaitForSeconds(0);
     }
@@ -781,6 +814,10 @@ public class Stars : MonoBehaviour
             // reset the position
             singleStar.Value.transform.position = new Vector3(theStarClass[singleStar.Key].xPos, theStarClass[singleStar.Key].yPos, theStarClass[singleStar.Key].zPos);
         }
+
+        // reset label and variable
+        timePassing = 0;
+        timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + timePassing + " Years";
     }
 
     public void resetAll()
@@ -789,6 +826,10 @@ public class Stars : MonoBehaviour
         resetPos();
         resetRot();
         resetStars();
+
+        // reset label and variable
+        timePassing = 0;
+        timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + timePassing + " Years";
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
