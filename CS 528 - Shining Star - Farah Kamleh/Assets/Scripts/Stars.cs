@@ -149,7 +149,27 @@ public class Stars : MonoBehaviour
         }
 
         // display the correct distance traveled
-        distance.GetComponent<Text>().text = "Distance Traveled: " + Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) + " Parsecs";
+
+        if (scaleSlider.value == 1)
+        {
+            distance.GetComponent<Text>().text = "Distance Traveled: " + (Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) * 0.25f) + " Parsecs";
+        }
+        else if (scaleSlider.value == 2)
+        {
+            distance.GetComponent<Text>().text = "Distance Traveled: " + (Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) * 0.5f) + " Parsecs";
+        }
+        else if (scaleSlider.value == 3)
+        {
+            distance.GetComponent<Text>().text = "Distance Traveled: " + Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) + " Parsecs";
+        }
+        else if (scaleSlider.value == 4)
+        {
+            distance.GetComponent<Text>().text = "Distance Traveled: " + (Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) * 2) + " Parsecs";
+        }
+        else if (scaleSlider.value == 5)
+        {
+            distance.GetComponent<Text>().text = "Distance Traveled: " + (Mathf.Round(Vector3.Distance(originalPos, player.transform.position)) * 3) + " Parsecs";
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------------------
