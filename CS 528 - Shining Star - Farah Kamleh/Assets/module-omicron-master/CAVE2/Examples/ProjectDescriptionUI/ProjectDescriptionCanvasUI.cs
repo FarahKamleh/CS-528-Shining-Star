@@ -8,7 +8,7 @@ public class ProjectDescriptionCanvasUI : MonoBehaviour
     GameObject canvasUIRoot = null;
 
     [SerializeField]
-    bool fadeAfterDistance = false;
+    public bool fadeAfterDistance = false;
 
     [SerializeField]
     float minFadingDistance = 5.0f;

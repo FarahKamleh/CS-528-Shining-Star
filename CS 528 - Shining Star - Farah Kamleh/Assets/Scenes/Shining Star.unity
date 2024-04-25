@@ -6205,6 +6205,7 @@ GameObject:
   - component: {fileID: 902695886}
   - component: {fileID: 902695885}
   - component: {fileID: 902695884}
+  - component: {fileID: 902695887}
   m_Layer: 5
   m_Name: Al-Thuraya Display
   m_TagString: Untagged
@@ -6219,18 +6220,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902695882}
-  m_LocalRotation: {x: -0, y: 0.70744604, z: -0, w: 0.7067674}
-  m_LocalPosition: {x: 0, y: 0, z: -0.003114581}
+  m_LocalRotation: {x: -0, y: 0.4357209, z: -0, w: 0.90008193}
+  m_LocalPosition: {x: 0, y: 0, z: 2.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1746135977}
   - {fileID: 1512013494}
   m_Father: {fileID: 1281230611}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 51.662003, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3.2449987, y: 1.379}
+  m_AnchoredPosition: {x: 2.542, y: 1.379}
   m_SizeDelta: {x: 2.2572, y: 1.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &902695884
@@ -6293,6 +6294,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &902695887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902695882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7509c0b59fe234e905cce0a4469310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasUIRoot: {fileID: 902695882}
+  fadeAfterDistance: 1
+  minFadingDistance: 1
+  fadeAfterTime: 0
+  fadeTime: 5
 --- !u!1 &904261915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6903,6 +6921,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starSprite: {fileID: 3209431677590680407, guid: dbfb28194f9b4fc4a8781082b94fbdc4,
     type: 3}
+  thurayaCanvas: {fileID: 902695882}
+  glow: {fileID: 2100000, guid: a3b32ba6b1bdfa34fa9d0a028663c0a0, type: 2}
   scaleSlider: {fileID: 1134905076}
   scaleText: {fileID: 1802794824}
   player: {fileID: 1281230610}

@@ -9,6 +9,12 @@ public class Stars : MonoBehaviour
     // reference the star sprite prefab
     public GameObject starSprite;
 
+    // canvas for thuraya
+    public GameObject thurayaCanvas;
+
+    // glow material
+    // public Material glow;
+
     // refer to the renderer
     SpriteRenderer renderer;
 
@@ -579,8 +585,10 @@ public class Stars : MonoBehaviour
                     // if part of Thuraya, recolor
                     if (values[0] == "2000")
                     {
-                        // FIXME: add glowy material
-                        lineRenderer.SetColors(new Color(185f / 255.0f, 55f / 255.0f, 55f / 255.0f), new Color(185f / 255.0f, 55f / 255.0f, 55f / 255.0f));
+                        // make thick and white instead of glowy
+                        lineRenderer.SetColors(new Color(255f / 255.0f, 255f / 255.0f, 255f / 255.0f), new Color(255f / 255.0f, 255f / 255.0f, 255f / 255.0f));
+                        lineRenderer.SetWidth(0.25f, 0.25f);
+                        //lineRenderer.material = glow;
                     }
                     else
                     {
@@ -844,10 +852,14 @@ public class Stars : MonoBehaviour
         }
 
         // set position and rotation of player
-        player.transform.position = new Vector3(6.11f, 4.25f, 1f);
+        player.transform.position = new Vector3(5.4184f, 3.134474f, 2.011816f);
         player.transform.rotation = Quaternion.Euler(-41.59f, 58.462f, 0f);
-    }
 
+        // turn on Al-Thuraya canvas
+        thurayaCanvas.SetActive(true);
+        thurayaCanvas.GetComponent<ProjectDescriptionCanvasUI>().fadeAfterDistance = true;
+    }
+    
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     // scale the stars out
