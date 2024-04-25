@@ -826,6 +826,37 @@ public class Stars : MonoBehaviour
         // reset label and variable
         timePassing = 0;
         timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + timePassing + " Years";
+
+        if (Modern.isOn == true)
+        {
+            Modern.isOn = false;
+            Modern.isOn = true;
+        }
+        if (Sufi.isOn == true)
+        {
+            Sufi.isOn = false;
+            Sufi.isOn = true;
+        }
+        if (Peninsula.isOn == true)
+        {
+            Peninsula.isOn = false;
+            Peninsula.isOn = true;
+        }
+        if (Indigenous.isOn == true)
+        {
+            Indigenous.isOn = false;
+            Indigenous.isOn = true;
+        }
+        if (LunarMansions.isOn == true)
+        {
+            LunarMansions.isOn = false;
+            LunarMansions.isOn = true;
+        }
+        if (Egyptian.isOn == true)
+        {
+            Egyptian.isOn = false;
+            Egyptian.isOn = true;
+        }
     }
 
     public void resetAll()
@@ -834,10 +865,6 @@ public class Stars : MonoBehaviour
         resetPos();
         resetRot();
         resetStars();
-
-        // reset label and variable
-        timePassing = 0;
-        timeElapsed.GetComponent<Text>().text = "Time Elapsed: " + timePassing + " Years";
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
