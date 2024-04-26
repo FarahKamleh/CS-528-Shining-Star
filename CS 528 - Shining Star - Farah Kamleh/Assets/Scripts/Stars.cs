@@ -10,7 +10,7 @@ public class Stars : MonoBehaviour
     public GameObject starSprite;
 
     // canvas for thuraya
-    public GameObject thurayaCanvas;
+    // public GameObject thurayaCanvas;
 
     // glow material
     // public Material glow;
@@ -883,8 +883,8 @@ public class Stars : MonoBehaviour
         player.transform.rotation = Quaternion.Euler(-41.59f, 58.462f, 0f);
 
         // turn on Al-Thuraya canvas
-        thurayaCanvas.SetActive(true);
-        thurayaCanvas.GetComponent<ProjectDescriptionCanvasUI>().fadeAfterDistance = true;
+        // thurayaCanvas.SetActive(true);
+        // thurayaCanvas.GetComponent<ProjectDescriptionCanvasUI>().fadeAfterDistance = true;
     }
     
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
